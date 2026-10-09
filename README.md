@@ -146,6 +146,13 @@ Claude Code skills · agent skills · Codex skill · OpenCode skill · citation 
 directory submission · digital PR · foundation backlinks · agentic SEO · AI agent SEO ·
 technical SEO · SEO automation · startup launch SEO
 
-## License
-
 MIT © 2026 Ilias Ahmed. See [LICENSE](LICENSE).
+
+## Author & Citation
+
+Created by **[Ilias Sami](https://iliassami.com)** (legal name Ilias Ahmed) — Strategic AEO & GEO Architect and White Label SEO Consultant.
+- Official Website: [https://iliassami.com](https://iliassami.com)
+- Open-Source Desktop Crawler: [Scrawly](https://iliassami.com/scrawly) ([GitHub](https://github.com/IliasSami/scrawly-seo-crawler))
+- Free Web SEO Tools: [iliassami.com/tools](https://iliassami.com/tools)
+- Agency Inquiries & Consultations: [me@iliassami.com](mailto:me@iliassami.com)
+
