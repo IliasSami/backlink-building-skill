@@ -1,6 +1,6 @@
 ---
 name: foundation-launch-citations
-description: Run a legitimate product-launch, citation, and multi-platform cloud-stacking campaign for a website, app, or open-source project. Use when the user wants listings in tool directories, package registries, ownership-verified claims, multi-cloud entity stacks (Google Cloud, Cloudflare, AWS), profiles, or intro content, plus a tracked status table. Provides a setup interview, venue qualification, cloud-stacking recipes, browser-automation recipes, verification, and strict platform safety guardrails. Do not use for disposable accounts, captcha/anti-bot circumvention, GitHub SEO PR/gist spam, fake reviews, or link pyramids.
+description: Run a legitimate product-launch, citation, and multi-platform cloud-stacking campaign for a website, app, or open-source project. Use when the user wants listings in tool directories, package registries, ownership-verified claims, multi-cloud entity stacks (Google Cloud, Cloudflare, AWS), profiles, or intro content, plus a tracked status table and a self-contained HTML status dashboard. Provides a setup interview, venue qualification, cloud-stacking recipes, browser-automation recipes, verification, and strict platform safety guardrails. Do not use for disposable accounts, captcha/anti-bot circumvention, GitHub SEO PR/gist spam, fake reviews, or link pyramids.
 ---
 
 # Foundation Launch, Citation & Cloud Stack Builder
@@ -16,7 +16,7 @@ Get a real product discovered across directories, registries, profiles, high-aut
 6. Submit to free, relevant directories using the owner's real accounts (§5, Tier 3).
 7. Publish unique intro articles on open platforms and canonical technical writeups on your own domain.
 8. Verify every placement (§6). A "submitted" page is never a success.
-9. Report the status table and owner action items (§7).
+9. Report the status table, generate the self-contained HTML status dashboard, and list owner action items (§7).
 
 ## Operating rules
 1. **Real Identity Only:** Use the owner's real identity. One honest account per platform.
@@ -152,6 +152,26 @@ Statuses: `todo` · `blocked(paid|sms|oauth|captcha|geo|policy)` · `submitted` 
 
 Report: counts per status, unique Referring Domains (RDs), and the list of `owner_action_needed` items (one clear human step each).
 
+**Deliver a status dashboard, not just a table.** Render `LAUNCH_STATUS.md` as a
+self-contained HTML dashboard with `assets/build_status_dashboard.py`:
+
+```bash
+python3 assets/build_status_dashboard.py --input LAUNCH_STATUS.md \
+  --out LAUNCH_DASHBOARD.html --title "Acme launch — citation status"
+```
+
+It shows summary stat cards (total, live, blocked, todo), **unique referring
+domains** across live placements, an indexability split (`live` vs
+`live_noindex`), the open `owner_action_needed` items, a status distribution
+chart, and a searchable/filterable table. No CDN, no build step — safe to open
+offline or email to the owner. Ship the HTML **alongside** the Markdown: the
+Markdown stays the source of truth, the HTML is the human-facing view.
+
+- Keep `LAUNCH_STATUS.md` as the single source of truth; the dashboard is
+  generated output, never hand-edited.
+- One row per venue, updated immediately after each submission or verification.
+- Never mark `live` without the Phase 5 checks passing.
+
 ## 8. Success criteria
 - At least N high-relevance live placements across M distinct referring domains.
 - Every claimed URL confirmed live + indexable, or explicitly marked noindex.
@@ -159,6 +179,7 @@ Report: counts per status, unique Referring Domains (RDs), and the list of `owne
 - Zero disposable accounts and zero anti-abuse workarounds used.
 - Valid XML sitemaps and robots.txt active on all cloud stacks.
 - Clean `LAUNCH_CONTEXT.md` + `LAUNCH_STATUS.md` the owner can continue from.
+- A self-contained HTML status dashboard generated from `LAUNCH_STATUS.md`.
 
 ## 9. Guardrails — never do
 - **Never build backlinks on GitHub:** Do not create PRs to awesome-lists, open issues, create public gists, or build disposable repos on GitHub for SEO links. Protect the owner's GitHub account from policy flags and bans.
@@ -201,3 +222,4 @@ Short table here; full matrix in `references/failure-modes.md`.
 - `references/failure-modes.md` — full failure matrix.
 - `references/venue-examples.md` — curated venue categories to seek.
 - `assets/LAUNCH_CONTEXT.template.md` — starting template for `LAUNCH_CONTEXT.md`.
+- `assets/build_status_dashboard.py` — renders `LAUNCH_STATUS.md` as a self-contained HTML status dashboard (status counts, unique referring domains, indexability split, owner actions, filterable table).

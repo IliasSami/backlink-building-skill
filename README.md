@@ -34,7 +34,7 @@ It follows an **authentic, policy-compliant playbook**: real identity, multi-pla
 
 ---
 
-## Key Features (v2.0)
+## Key Features (v2.1)
 
 - **Tier 0 Multi-Platform Cloud Stacking:** Automated deployment of standalone, entity-optimized HTML assets across major cloud hyper-scalers (**Google Cloud Storage DA 100**, **Cloudflare Pages DA 92**, **Cloudflare Workers DA 92**, **AWS S3 DA 96**).
 - **Referring Domain (RD) Diversification:** Enforces distribution across distinct root domains rather than clustering links on a single platform.
@@ -43,6 +43,7 @@ It follows an **authentic, policy-compliant playbook**: real identity, multi-pla
 - **Deep Entity Schema Injection:** Embeds rich nested JSON-LD schemas (`TechArticle`, `Person`, `Organization`, `Service`) with unambiguous `@id` referencing and `sameAs` entity correlations.
 - **Strict Platform Safety (GitHub Anti-Ban Rule):** Hard guardrail against creating automated PRs, issues, gists, or repos on GitHub for SEO links, protecting developer accounts from policy flags or bans.
 - **Battle-Tested Failure Handling:** Built-in mitigation for API rate limits (Write.as 429), WAF challenges, noindex markdown pastes (Rentry), and GCP service account quota boundaries.
+- **Status Dashboard (v2.1):** `assets/build_status_dashboard.py` renders `LAUNCH_STATUS.md` as a self-contained, offline HTML dashboard — status counts, **unique referring domains**, indexability split (`live` vs `live_noindex`), open owner actions, and a searchable/filterable table. No CDN, no build step; the Markdown stays the source of truth.
 
 ---
 
@@ -120,7 +121,7 @@ Then ask your agent to use the **`foundation-launch-citations`** skill.
 5. It submits to qualified free directories using the owner's real accounts.
 6. It publishes unique technical intro articles on open platforms and canonical docs on your domain.
 7. It programmatically verifies every placement (HTTP 200, money URL present, schema valid, robots indexable).
-8. It outputs a living status table in `LAUNCH_STATUS.md`.
+8. It maintains a living status table in `LAUNCH_STATUS.md` and renders a self-contained HTML status dashboard (`LAUNCH_DASHBOARD.html`) with status counts, unique referring domains, and owner action items.
 
 ---
 
@@ -136,7 +137,8 @@ foundation-launch-citations/
 │   ├── failure-modes.md              # real-world failure matrix & mitigation
 │   └── venue-examples.md             # venue tiers to seek & skip
 └── assets/
-    └── LAUNCH_CONTEXT.template.md    # ready-to-fill product-facts template
+    ├── LAUNCH_CONTEXT.template.md    # ready-to-fill product-facts template
+    └── build_status_dashboard.py     # LAUNCH_STATUS.md -> self-contained HTML dashboard
 ```
 
 ---
